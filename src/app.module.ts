@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { AppController } from './app.controller.js';
+import { AppService } from './app.service.js';
 import { MongooseModule } from '@nestjs/mongoose';
-import { CredentialModule } from './credential/credential.module';
-import { ActorModule } from './actor/actor.module';
-import { SignAndVerifyModule } from './sign-and-verify/sign-and-verify.module';
+import { CredentialModule } from './credential/credential.module.js';
+import { ActorModule } from './actor/actor.module.js';
+import { SignAndVerifyModule } from './sign-and-verify/sign-and-verify.module.js';
 
 @Module({
   imports: [

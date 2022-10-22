@@ -22,6 +22,9 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@digitalbazaar/ed25519-signature-2020": "5.0.0",
+    "@digitalbazaar/ed25519-verification-key-2020": "4.1.0",
+    "@digitalbazaar/vc": "5.0.0",
     "@mavennet/document-loader": "github:mavennet/document-loader",
     "@mavennet/vc-contexts": "github:mavennet/vc-contexts",
     "@nestjs/common": "^9.0.0",
@@ -29,6 +32,7 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/mongoose": "^9.2.0",
     "@nestjs/platform-express": "^9.0.0",
+    "ed25519": "0.0.5",
     "mongoose": "^6.6.7",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
