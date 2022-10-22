@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
-import { CredentialService } from './credential.service';
-import { CreateCredentialDto } from './dto/create-credential.dto';
+import { CredentialService } from './credential.service.js';
+import { CreateCredentialDto } from './dto/create-credential.dto.js';
 
 @Controller('credential')
 export class CredentialController {

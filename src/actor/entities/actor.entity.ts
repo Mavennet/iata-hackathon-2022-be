@@ -7,6 +7,9 @@ export class Actor {
   name: string;
 
   @Prop()
+  publicKey: string;
+
+  @Prop()
   privateKey: string;
 }
 
