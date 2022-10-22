@@ -11,13 +11,10 @@ export class SignAndVerifyService {
 
   async getKey(actorId): Promise<any> {
     // const key = await generate({ seed });
-    const { privateKey, publicKey } = this.actorService.getKeys(actorId);
+    const { privateKey, publicKey } = await this.actorService.findOne(actorId);
     return new Ed25519VerificationKey2020({
-      id: `did:key:${publicKey}#${publicKey}`,
-      controller: `did:key:${publicKey}`,
-      type: 'Ed25519VerificationKey2020',
-      publicKeyBase58: publicKey,
-      privateKeyBase58: privateKey,
+      publicKeyMultibase: publicKey,
+      privateKeyMultibase: privateKey,
     });
   }
 
