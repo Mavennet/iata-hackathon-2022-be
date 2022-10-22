@@ -6,6 +6,7 @@ import { CredentialModule } from './credential/credential.module.js';
 import { ActorModule } from './actor/actor.module.js';
 import { SignAndVerifyModule } from './sign-and-verify/sign-and-verify.module.js';
 import { CallbackModule } from './callback/callback.module.js';
+import { PieceModule } from './piece/piece.module.js';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { CallbackModule } from './callback/callback.module.js';
     ActorModule,
     SignAndVerifyModule,
     CallbackModule,
+    PieceModule,
   ],
   controllers: [AppController],
   providers: [AppService],

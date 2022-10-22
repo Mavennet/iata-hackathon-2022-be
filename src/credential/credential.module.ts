@@ -12,5 +12,6 @@ import { Credential, CredentialSchema } from './entities/credential.entity.js';
   ],
   controllers: [CredentialController],
   providers: [CredentialService],
+  exports: [CredentialService],
 })
 export class CredentialModule {}

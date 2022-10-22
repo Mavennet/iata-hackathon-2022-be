@@ -24,6 +24,14 @@ export class CredentialService {
     return credentials;
   }
 
+  async findAllWithPieceId(pieceId: string) {
+    return await this.credentialModel
+      .find({
+        'credentialSubject.pieceId': pieceId,
+      })
+      .exec();
+  }
+
   async findOne(id: string) {
     return await this.credentialModel
       .find({

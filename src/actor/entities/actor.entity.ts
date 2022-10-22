@@ -3,13 +3,13 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class Actor {
-  @Prop()
+  @Prop({ required: true })
   name: string;
 
-  @Prop()
+  @Prop({ required: true })
   publicKey: string;
 
-  @Prop()
+  @Prop({ required: true })
   privateKey: string;
 }
 

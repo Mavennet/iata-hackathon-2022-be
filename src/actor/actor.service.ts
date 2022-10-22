@@ -24,6 +24,9 @@ export class ActorService {
     return await this.actorModel.findById(id).exec();
   }
 
+  async findByName(name: string) {
+    return await this.actorModel.findOne({ name }).exec();
+  }
   async remove(id: number) {
     return await this.actorModel.findByIdAndDelete(id);
   }
