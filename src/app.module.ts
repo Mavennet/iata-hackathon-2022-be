@@ -1,13 +1,19 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller.js';
-import { AppService } from './app.service.js';
-import { PieceModule } from './piece/piece.module.js';
-import { SignAndVerifyModule } from './sign-and-verify/sign-and-verify.module.js';
-import { SignAndVerifyService } from './sign-and-verify/sign-and-verify.service.js';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { MongooseModule } from '@nestjs/mongoose';
+import { CredentialModule } from './credential/credential.module';
+import { ActorModule } from './actor/actor.module';
 
 @Module({
-  imports: [PieceModule, SignAndVerifyModule],
+  imports: [
+    MongooseModule.forRoot(
+      'mongodb+srv://iata_admin:zldRF7b4x2DiWkqD@iata-onerecord.awditfv.mongodb.net/iata-be?retryWrites=true&w=majority',
+    ),
+    CredentialModule,
+    ActorModule,
+  ],
   controllers: [AppController],
-  providers: [AppService, SignAndVerifyService],
+  providers: [AppService],
 })
 export class AppModule {}
