@@ -1,7 +1,15 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { PieceService } from './piece.service';
-import { CreatePieceDto } from './dto/create-piece.dto';
-import { UpdatePieceDto } from './dto/update-piece.dto';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
+import { PieceService } from './piece.service.js';
+import { CreatePieceDto } from './dto/create-piece.dto.js';
+import { UpdatePieceDto } from './dto/update-piece.dto.js';
 
 @Controller('piece')
 export class PieceController {
