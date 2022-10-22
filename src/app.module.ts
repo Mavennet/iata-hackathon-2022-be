@@ -5,7 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { CredentialModule } from './credential/credential.module.js';
 import { ActorModule } from './actor/actor.module.js';
 import { SignAndVerifyModule } from './sign-and-verify/sign-and-verify.module.js';
-import { CallbackModule } from './callback/callback.module';
+import { CallbackModule } from './callback/callback.module.js';
 
 @Module({
   imports: [
