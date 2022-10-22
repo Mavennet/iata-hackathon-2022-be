@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CredentialModule } from './credential/credential.module';
 import { ActorModule } from './actor/actor.module';
+import { SignAndVerifyModule } from './sign-and-verify/sign-and-verify.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { ActorModule } from './actor/actor.module';
     ),
     CredentialModule,
     ActorModule,
+    SignAndVerifyModule,
   ],
   controllers: [AppController],
   providers: [AppService],
