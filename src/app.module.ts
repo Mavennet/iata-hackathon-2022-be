@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CredentialModule } from './credential/credential.module';
 import { ActorModule } from './actor/actor.module';
+import { CallbackModule } from './callback/callback.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { ActorModule } from './actor/actor.module';
     ),
     CredentialModule,
     ActorModule,
+    CallbackModule,
   ],
   controllers: [AppController],
   providers: [AppService],

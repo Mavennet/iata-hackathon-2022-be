@@ -10,5 +10,6 @@ import { Actor, ActorSchema } from './entities/actor.entity.js';
   ],
   controllers: [ActorController],
   providers: [ActorService],
+  exports: [ActorService],
 })
 export class ActorModule {}
