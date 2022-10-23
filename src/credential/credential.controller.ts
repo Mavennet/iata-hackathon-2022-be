@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Query,
+} from '@nestjs/common';
 import { CredentialService } from './credential.service.js';
 import { CreateCredentialDto } from './dto/create-credential.dto.js';
 
@@ -11,9 +19,9 @@ export class CredentialController {
     return this.credentialService.create(createCredentialDto);
   }
 
-  @Get()
-  findAll(@Body() body: any) {
-    return this.credentialService.findAllWithPieceId(body.id);
+  @Get('')
+  findAll(@Query('id') id: string) {
+    return this.credentialService.findAllWithPieceId('iata:Piece/' + id);
   }
 
   @Get('')
