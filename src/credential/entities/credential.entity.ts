@@ -14,6 +14,9 @@ export class Credential {
 
   @Prop()
   type: string[];
+
+  @Prop({ type: JSON })
+  proof: JSON;
 }
 
 type CredentialSubject = {
