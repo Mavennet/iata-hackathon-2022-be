@@ -35,7 +35,7 @@ export class SignAndVerifyService {
     const unsignedCredential = this.constructCredential(objectToSign, actor);
     console.log(unsignedCredential);
     console.log(suite);
-    const { credential } = await issue({
+    const credential = await issue({
       credential: unsignedCredential,
       suite,
       documentLoader,
