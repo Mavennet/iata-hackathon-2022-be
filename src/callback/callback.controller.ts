@@ -8,11 +8,11 @@ export class CallbackController {
   @Post('/')
   async callback(@Body() body: any, @Query('topic') topic: string) {
     const topics = {
-      Piece: async (body, topic) => this.callbackService.signPiece(body, topic),
       TransportMovement: async (body, topic) =>
         this.callbackService.signTransportMovement(body, topic),
     };
 
+    // currently only supports TransportMovement, can support other topics by adding to the object above.
     return await topics[topic](body, topic);
   }
 }

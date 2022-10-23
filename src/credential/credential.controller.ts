@@ -12,11 +12,11 @@ export class CredentialController {
   }
 
   @Get()
-  findAll() {
-    return this.credentialService.findAll();
+  findAll(@Body() body: any) {
+    return this.credentialService.findAllWithPieceId(body.id);
   }
 
-  @Get(':id')
+  @Get('')
   findOne(@Param('id') id: string) {
     return this.credentialService.findOne(id);
   }

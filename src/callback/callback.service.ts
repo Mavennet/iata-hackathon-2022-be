@@ -9,30 +9,52 @@ export class CallbackService {
     private readonly signAndVerifyService: SignAndVerifyService,
   ) {}
 
-  signPiece = async (body, topic) => {
-    const credentialSubject =
-      body[`https://onerecord.iata.org/api/Notification#${topic}`];
-    const actor = await this.actorService.findOne(
-      body[
-        'https://onerecord.iata.org/cargo/TransportMovement#companyIdentifier'
-      ],
-    );
-    console.log({ actor });
-    console.log({ credentialSubject });
-    console.log('signPiece');
-    return await this.signAndVerifyService.signVC(credentialSubject, actor);
-  };
   signTransportMovement = async (body, topic) => {
-    const credentialSubject =
+    const transportMovement =
       body[`https://onerecord.iata.org/api/Notification#${topic}`];
 
-    const actor = await this.actorService.findByName(
-      credentialSubject[
+    const transportPieces =
+      transportMovement['iata:transportMovement:transportedPieces'];
+
+    const airplane = transportMovement['iata:transportMovement:transportMeans'];
+    const movementActor = await this.actorService.findByName(airplane);
+
+    const movementCredential = await this.signAndVerifyService.signVC(
+      transportMovement,
+      movementActor,
+    );
+
+    const airlineActor = await this.actorService.findByName(
+      transportMovement[
         'https://onerecord.iata.org/cargo/TransportMovement#companyIdentifier'
       ],
     );
-    console.log(credentialSubject);
 
-    return await this.signAndVerifyService.signVC(credentialSubject, actor);
+    //calculate the total weight of the transport movement
+    const totalWeight = transportPieces.reduce((acc, piece) => {
+      return acc + piece.volumetricWeight;
+    }, 0);
+
+    const pieceCredentials = await Promise.all(
+      transportPieces.map(async (p) => {
+        const pieceWithEmissions = {
+          ...p,
+
+          'iata:co2Emissions:calculatedEmissions': {
+            '@type': 'iata:CO2Emissions',
+            calculatedEmissions:
+              (p.volumetricWeight / totalWeight) *
+              transportMovement['iata:transportMovement:co2Emissions']
+                .calculatedEmissions,
+          },
+        };
+        return await this.signAndVerifyService.signVC(
+          pieceWithEmissions,
+          airlineActor,
+        );
+      }),
+    );
+
+    return [movementCredential, ...pieceCredentials];
   };
 }

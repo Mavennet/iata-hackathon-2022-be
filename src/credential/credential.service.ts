@@ -27,7 +27,13 @@ export class CredentialService {
   async findAllWithPieceId(pieceId: string) {
     return await this.credentialModel
       .find({
-        'credentialSubject.pieceId': pieceId,
+        $or: [
+          { 'credentialSubject.@id': pieceId },
+          {
+            'credentialSubject.iata:transportMovement:transportedPieces.@id':
+              pieceId,
+          },
+        ],
       })
       .exec();
   }

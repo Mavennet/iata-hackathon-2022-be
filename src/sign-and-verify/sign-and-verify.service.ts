@@ -6,10 +6,14 @@ import { Ed25519Signature2020 } from '@digitalbazaar/ed25519-signature-2020';
 
 import { documentLoader } from './documentLoader.js';
 import { ActorService } from '../actor/actor.service.js';
+import { CredentialService } from '../credential/credential.service.js';
 
 @Injectable()
 export class SignAndVerifyService {
-  constructor(private readonly actorService: ActorService) {}
+  constructor(
+    private readonly actorService: ActorService,
+    private readonly credentialService: CredentialService,
+  ) {}
 
   async getKey(actor): Promise<any> {
     const { privateKey, publicKey } = actor;
@@ -33,14 +37,12 @@ export class SignAndVerifyService {
   async signVC(objectToSign, actor): Promise<any> {
     const suite = await this.getSuite(actor);
     const unsignedCredential = this.constructCredential(objectToSign, actor);
-    console.log(unsignedCredential);
-    console.log(suite);
     const credential = await issue({
       credential: unsignedCredential,
       suite,
       documentLoader,
     });
-    console.log(credential);
+    await this.credentialService.create(credential);
 
     return credential;
   }
@@ -49,7 +51,7 @@ export class SignAndVerifyService {
     return {
       '@context': [
         'https://www.w3.org/2018/credentials/v1',
-        'https://w3id.org/traceability/v1',
+        'https://onerecord.iata.org',
       ],
       type: ['VerifiableCredential'],
       issuer: `did:key:${actor.publicKey}`,
