@@ -26,8 +26,6 @@
     "@digitalbazaar/ed25519-signature-2020": "5.0.0",
     "@digitalbazaar/ed25519-verification-key-2020": "4.1.0",
     "@digitalbazaar/vc": "5.0.0",
-    "@mavennet/document-loader": "^1.0.8",
-    "@mavennet/vc-contexts": "^1.0.2",
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/mapped-types": "*",

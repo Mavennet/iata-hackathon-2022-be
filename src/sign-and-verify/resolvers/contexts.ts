@@ -1,4 +1,56 @@
-import { contexts } from '@mavennet/vc-contexts';
+const didConstants = {
+  DID_CONTEXT_V1_URL: 'https://www.w3.org/ns/did/v1',
+};
+
+const securityConstants = {
+  ED25519_2018_v1_URL: 'https://w3id.org/security/suites/ed25519-2018/v1',
+  ED25519_2020_v1_URL: 'https://w3id.org/security/suites/ed25519-2020/v1',
+};
+
+const credentialConstants = {
+  CREDENTIALS_CONTEXT_V1_URL: 'https://www.w3.org/2018/credentials/v1',
+};
+
+const traceabilityConstants = {
+  TRACEABILITY_CONTEXT: 'https://w3id.org/traceability/v1',
+};
+
+const revocationConstants = {
+  REVOCATION_2020: 'https://w3id.org/vc-revocation-list-2020/v1',
+};
+
+const mavennetContext = {
+  MAVENNET_CONTEXT_V1: 'https://mavennet.github.io/contexts/v1.jsonld',
+  MAVENNET_CONTEXT_V2: 'https://mavennet.github.io/contexts/v2.jsonld',
+};
+
+const didConfigurationContext = {
+  DID_CONFIG_CONTEXT:
+    'https://identity.foundation/.well-known/contexts/did-configuration-v0.2.jsonld',
+};
+
+const schemaOrgContext = {
+  SCHEMA_ORG_CONTEXT:
+    'https://schema.org/version/latest/schemaorg-current-https.jsonld',
+};
+
+const contexts: any = {
+  [didConstants.DID_CONTEXT_V1_URL]: didConstants.DID_CONTEXT_V1_URL,
+  [securityConstants.ED25519_2018_v1_URL]:
+    securityConstants.ED25519_2018_v1_URL,
+  [securityConstants.ED25519_2020_v1_URL]:
+    securityConstants.ED25519_2020_v1_URL,
+  [credentialConstants.CREDENTIALS_CONTEXT_V1_URL]:
+    credentialConstants.CREDENTIALS_CONTEXT_V1_URL,
+  [revocationConstants.REVOCATION_2020]: revocationConstants.REVOCATION_2020,
+  [traceabilityConstants.TRACEABILITY_CONTEXT]:
+    traceabilityConstants.TRACEABILITY_CONTEXT,
+  [mavennetContext.MAVENNET_CONTEXT_V1]: mavennetContext.MAVENNET_CONTEXT_V1,
+  [mavennetContext.MAVENNET_CONTEXT_V2]: mavennetContext.MAVENNET_CONTEXT_V2,
+  [didConfigurationContext.DID_CONFIG_CONTEXT]:
+    didConfigurationContext.DID_CONFIG_CONTEXT,
+  'https://schema.org/': schemaOrgContext.SCHEMA_ORG_CONTEXT,
+};
 
 const unsecureContexts = {
   ...contexts,
