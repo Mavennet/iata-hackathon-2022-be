@@ -11,7 +11,7 @@ import { PieceModule } from './piece/piece.module.js';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb+srv://iata_admin:zldRF7b4x2DiWkqD@iata-onerecord.awditfv.mongodb.net/iata-be?retryWrites=true&w=majority',
+      process.env.MONGODB_URL,
     ),
     CredentialModule,
     ActorModule,
